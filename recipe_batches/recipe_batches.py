@@ -1,11 +1,23 @@
 #!/usr/bin/python
 
 import math
+import operator
+
+# recipe values = amount of each ingredient needs
+# ingredients values = amounts represent the amounts available to you
 
 def recipe_batches(recipe, ingredients):
-  pass 
+    batches = {}
+    print("Recipe Items", recipe.items())
 
+    for item, amount in recipe.items():
+        if item not in ingredients:
+            return 0
+        batches[item] = ingredients[item] // amount
+        print("batches[item]", batches[item])
+    return min(batches.items(), key=operator.itemgetter(1))[1]
 
+ 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
   # your implementation with different inputs
